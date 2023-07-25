@@ -1,4 +1,4 @@
-
+ 
 class player  {
     
     constructor (SpawnLocationX,SpawnLocationY,CurrentScene) {
