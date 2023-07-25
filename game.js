@@ -1,10 +1,5 @@
-<<<<<<< Updated upstream
  
 class player  {
-=======
-
-class player {
->>>>>>> Stashed changes
     
     constructor (SpawnLocationX,SpawnLocationY,CurrentScene) {
         //create a physical player object and setup physics values
