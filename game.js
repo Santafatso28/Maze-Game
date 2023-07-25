@@ -1,14 +1,22 @@
+<<<<<<< Updated upstream
  
 class player  {
+=======
+
+class player {
+>>>>>>> Stashed changes
     
     constructor (SpawnLocationX,SpawnLocationY,CurrentScene) {
         //create a physical player object and setup physics values
-        console.log(game.scene)
-
         this.Character = CurrentScene.add.sprite(SpawnLocationX,SpawnLocationY,"Character")
+        console.log(CurrentScene.physics.World)
+        console.log(this.Character)
+
+        this.Character.Body = new Phaser.Physics.Arcade.Body(CurrentScene.physics.World,this.Character)
         this.Character.depth = 10
         this.Character.visible = true
-
+        CurrentScene.add.existing(this.Character);
+        CurrentScene.physics.add.existing(this.cameraFilter);
         //setup health and damage
         this.health = 100
         this.damage = 40
@@ -51,31 +59,44 @@ class player  {
         this.load.image("sky", "Assets/Background.png")
         
     }
+    function clamp (x, min, max) {
+        if (x < min) {
+            x = min
+        }
+        if (x>max) {
+            x == max
+        }
+        return x
 
+    }
     function create () {
         Player =  new player(600,300,this)
         let background = this.add.tileSprite(game.config.width/2, game.config.height/2, game.config.width, game.config.height, 'sky') 
         TimerImage = this.add.text(0,0,TimeRemaining.toString())
+        
     }
+    function LoseGame() {
+        //display lose game screen and get rid of input connections
 
+    }
     function update (t,dt)
     {
       //take player input
         if (keys.F.isDown) {
-            console.log("f")
+            Player.Character.setVelocityX(5)
         }
         if (keys.S.isDown) {
-            console.log("S")
+            Player.Character.setVelocityX(-5)
         }
         if (keys.D.isDown) {
-            console.log("D")
+            Player.Character.setVelocityY(5)
         }
         if (keys.E.isDown) {
-            console.log("E")
+            Player.Character.setVelocityY(-5)
         }
     //update the timer
     
-    TimeRemaining = Math.Clamp(TimeRemaining- (dt/1000),0,20)
+    TimeRemaining = clamp((TimeRemaining- (dt/1000)),0,20)
     TimerImage.setText(TimeRemaining.toString())
 
     //Lose the game if timer reaches 0
@@ -83,5 +104,11 @@ class player  {
 
     }
 
+<<<<<<< Updated upstream
 //commit change - abby
     }
+=======
+
+    }
+
+>>>>>>> Stashed changes
