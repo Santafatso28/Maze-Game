@@ -99,11 +99,5 @@ class player  {
 
     }
 
-<<<<<<< Updated upstream
 //commit change - abby
     }
-=======
-
-    }
-
->>>>>>> Stashed changes
